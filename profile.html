@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist Profile — Newcastle Musicians</title>
+  <meta name="description" content="Artist profile page.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Newcastle <span>Musicians</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="submit.html" class="btn btn-primary btn-sm nav-cta">List Your Act</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PROFILE HERO — populated by JS -->
+  <section class="profile-hero">
+    <div class="container">
+      <a href="directory.html" class="back-link">← Back to Directory</a>
+      <div id="profile-hero-content" class="loading">Loading profile…</div>
+    </div>
+  </section>
+
+  <!-- MEDIA / EMBEDS -->
+  <section class="section embed-section" id="media-section" style="display:none;">
+    <div class="container">
+      <h2 class="section-title">Listen &amp; <span>Watch</span></h2>
+      <div class="divider"></div>
+      <div class="embed-grid" id="embed-grid"></div>
+    </div>
+  </section>
+
+  <!-- AVAILABILITY & BOOKING -->
+  <section class="section" style="background:var(--bg2);" id="booking-section" style="display:none;">
+    <div class="container">
+      <div style="max-width:720px;">
+        <h2 class="section-title">Booking <span>Info</span></h2>
+        <div class="divider"></div>
+        <div class="avail-box" id="avail-box"></div>
+        <div style="margin-top:1.5rem;" id="booking-cta"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">Newcastle <span>Musicians</span></span>
+        <ul class="footer-links">
+          <li><a href="directory.html">Directory</a></li>
+          <li><a href="submit.html">List Your Act</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <p class="footer-copy">© 2024 Newcastle Musicians. Made for the Hunter Valley music community.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

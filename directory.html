@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Band Directory — Newcastle Musicians</title>
+  <meta name="description" content="Browse all Newcastle and Hunter Valley bands, solo artists and DJs. Filter by genre to find the right act for your event.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Newcastle <span>Musicians</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="directory.html" class="active">Directory</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="submit.html" class="btn btn-primary btn-sm nav-cta">List Your Act</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <h1>Artist <span class="text-accent">Directory</span></h1>
+      <p>Browse all Newcastle and Hunter Valley acts. Filter by genre to find the right sound for your event.</p>
+    </div>
+  </header>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="container">
+      <div class="filter-inner">
+        <span class="filter-label">Genre:</span>
+        <button class="filter-btn active" data-genre="all">All</button>
+        <button class="filter-btn" data-genre="Rock">Rock</button>
+        <button class="filter-btn" data-genre="Pop">Pop</button>
+        <button class="filter-btn" data-genre="Folk">Folk</button>
+        <button class="filter-btn" data-genre="Country">Country</button>
+        <button class="filter-btn" data-genre="Blues">Blues</button>
+        <button class="filter-btn" data-genre="Jazz">Jazz</button>
+        <button class="filter-btn" data-genre="Electronic">Electronic</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAND GRID -->
+  <section class="section">
+    <div class="container">
+      <div id="results-count" style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1.5rem;"></div>
+      <div class="band-grid" id="band-grid">
+        <div class="loading">Loading artists…</div>
+      </div>
+      <div id="empty-state" class="empty-state hidden">
+        <p>No artists found for that genre yet.</p>
+        <a href="submit.html" class="btn btn-outline">Be the first to list your act</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">Newcastle <span>Musicians</span></span>
+        <ul class="footer-links">
+          <li><a href="directory.html">Directory</a></li>
+          <li><a href="submit.html">List Your Act</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <p class="footer-copy">© 2024 Newcastle Musicians. Made for the Hunter Valley music community.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/directory.js"></script>
+</body>
+</html>

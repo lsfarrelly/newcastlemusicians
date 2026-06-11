@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newcastle Musicians — Find & Book Local Talent</title>
+  <meta name="description" content="Discover and book the best live music acts from Newcastle and the Hunter Valley. Browse bands, DJs and solo artists for weddings, corporate events and more.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Newcastle <span>Musicians</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="submit.html" class="btn btn-primary btn-sm nav-cta">List Your Act</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Newcastle & Hunter Valley</span>
+        <h1>Find the <span>Perfect Sound</span> for Your Event</h1>
+        <p class="hero-sub">Browse local bands, solo artists and DJs. From intimate acoustic sets to full-band blowouts — Newcastle's live music talent, all in one place.</p>
+        <div class="hero-actions">
+          <a href="directory.html" class="btn btn-primary">Browse Directory</a>
+          <a href="submit.html" class="btn btn-outline">List Your Act</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num" id="stat-bands">–</div>
+            <div class="hero-stat-label">Artists Listed</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">10+</div>
+            <div class="hero-stat-label">Genres</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">Free</div>
+            <div class="hero-stat-label">To Browse</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED BANDS -->
+  <section class="section featured">
+    <div class="container">
+      <h2 class="section-title">Featured <span>Acts</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Hand-picked talent from across the Hunter Valley.</p>
+      <div class="band-grid" id="featured-grid">
+        <div class="loading">Loading bands…</div>
+      </div>
+      <div style="margin-top:2.5rem;">
+        <a href="directory.html" class="btn btn-outline">View All Artists →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+      <h2 class="section-title">How It <span>Works</span></h2>
+      <div class="divider"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-top:2rem;">
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;">
+          <div style="font-size:2rem;margin-bottom:1rem;">🔍</div>
+          <h3 style="margin-bottom:0.5rem;">Browse</h3>
+          <p style="color:var(--text-muted);font-size:0.9rem;">Search by genre, location or event type. Filter to find exactly the right act for your occasion.</p>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;">
+          <div style="font-size:2rem;margin-bottom:1rem;">🎵</div>
+          <h3 style="margin-bottom:0.5rem;">Listen</h3>
+          <p style="color:var(--text-muted);font-size:0.9rem;">Check out Spotify, SoundCloud and YouTube samples directly from each artist's profile page.</p>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;">
+          <div style="font-size:2rem;margin-bottom:1rem;">📩</div>
+          <h3 style="margin-bottom:0.5rem;">Book Direct</h3>
+          <p style="color:var(--text-muted);font-size:0.9rem;">Contact artists directly via email — no middleman, no commissions. Keep 100% of your budget for the music.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:var(--bg2);text-align:center;">
+    <div class="container">
+      <h2 style="margin-bottom:1rem;">Are You a Musician?</h2>
+      <p style="color:var(--text-muted);max-width:520px;margin:0 auto 2rem;">Get your act in front of event planners, wedding couples and venue bookers across Newcastle and the Hunter Valley — for free.</p>
+      <a href="submit.html" class="btn btn-primary">Submit Your Profile</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">Newcastle <span>Musicians</span></span>
+        <ul class="footer-links">
+          <li><a href="directory.html">Directory</a></li>
+          <li><a href="submit.html">List Your Act</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <p class="footer-copy">© 2024 Newcastle Musicians. Made for the Hunter Valley music community.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Load featured bands on homepage
+    fetch('bands.json')
+      .then(r => r.json())
+      .then(bands => {
+        const featured = bands.filter(b => b.featured);
+        document.getElementById('stat-bands').textContent = bands.length + '+';
+        const grid = document.getElementById('featured-grid');
+        if (!featured.length) { grid.innerHTML = '<p class="text-muted">No featured acts yet.</p>'; return; }
+        grid.innerHTML = featured.map(b => bandCard(b)).join('');
+      })
+      .catch(() => { document.getElementById('featured-grid').innerHTML = '<p class="text-muted">Could not load bands.</p>'; });
+  </script>
+</body>
+</html>

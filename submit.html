@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List Your Act — Newcastle Musicians</title>
+  <meta name="description" content="Submit your band or artist profile to the Newcastle Musicians directory. Free to list.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Newcastle <span>Musicians</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="submit.html" class="btn btn-primary btn-sm nav-cta">List Your Act</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <h1>List Your <span class="text-accent">Act</span></h1>
+      <p>Submit your profile to appear in the Newcastle Musicians directory. Free to list, no commission ever.</p>
+    </div>
+  </header>
+
+  <section class="section form-section">
+    <div class="container">
+      <div class="form-card">
+        <form name="band-submission" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="submit-form">
+          <input type="hidden" name="form-name" value="band-submission">
+          <p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+          <div class="form-grid">
+            <!-- Band name -->
+            <div class="form-group full">
+              <label for="band-name">Act / Band Name *</label>
+              <input type="text" id="band-name" name="band-name" required maxlength="100" placeholder="e.g. The Harbour Lights">
+            </div>
+
+            <!-- Contact email -->
+            <div class="form-group">
+              <label for="contact-email">Contact Email *</label>
+              <input type="email" id="contact-email" name="contact-email" required placeholder="your@email.com">
+            </div>
+
+            <!-- Booking email -->
+            <div class="form-group">
+              <label for="booking-email">Booking Email</label>
+              <input type="email" id="booking-email" name="booking-email" placeholder="If different from contact">
+            </div>
+
+            <!-- Location -->
+            <div class="form-group">
+              <label for="location">Suburb / Area *</label>
+              <input type="text" id="location" name="location" required placeholder="e.g. Newcastle CBD">
+            </div>
+
+            <!-- Fee range -->
+            <div class="form-group">
+              <label for="fee-range">Fee Range</label>
+              <select id="fee-range" name="fee-range">
+                <option value="">Select…</option>
+                <option value="$0–$500">$0 – $500</option>
+                <option value="$500–$1500">$500 – $1,500</option>
+                <option value="$1500+">$1,500+</option>
+                <option value="POA">POA / Negotiable</option>
+              </select>
+            </div>
+
+            <!-- Genre -->
+            <div class="form-group full">
+              <label>Genre(s) *</label>
+              <div class="genre-checkboxes" id="genre-checkboxes">
+                <label class="genre-check-label"><input type="checkbox" name="genre" value="Rock"> Rock</label>
+                <label class="genre-check-label"><input type="checkbox" name="genre" value="Pop"> Pop</label>
+                <label class="genre-check-label"><input type="checkbox" name="genre" value="Folk"> Folk</label>
+                <label class="genre-check-label"><input type="checkbox" name="genre" value="Country"> Country</label>
+                <label class="genre-check-label"><input type="checkbox" name="genre" value="Blues"> Blues</label>
+                <label class="genre-check-label"><input type="checkbox" name="genre" value="Jazz"> Jazz</label>
+                <label class="genre-check-label"><input type="checkbox" name="genre" value="Electronic"> Electronic</label>
+                <label class="genre-check-label"><input type="checkbox" name="genre" value="R&B"> R&amp;B</label>
+                <label class="genre-check-label"><input type="checkbox" name="genre" value="Hip-Hop"> Hip-Hop</label>
+                <label class="genre-check-label"><input type="checkbox" name="genre" value="Classical"> Classical</label>
+                <label class="genre-check-label"><input type="checkbox" name="genre" value="Other"> Other</label>
+              </div>
+            </div>
+
+            <!-- Bio -->
+            <div class="form-group full">
+              <label for="bio">Bio / Description * <span id="bio-count" class="char-count">0 / 300</span></label>
+              <textarea id="bio" name="bio" required maxlength="300" rows="4" placeholder="Tell event bookers what makes your act special. Keep it punchy — 2–3 sentences."></textarea>
+            </div>
+
+            <!-- Availability -->
+            <div class="form-group full">
+              <label for="availability">Availability Notes</label>
+              <textarea id="availability" name="availability" rows="2" placeholder="e.g. Available weekends. Minimum 2-hour set. No surcharge within 50km of Newcastle."></textarea>
+            </div>
+
+            <!-- Social links -->
+            <div class="form-group">
+              <label for="spotify">Spotify URL</label>
+              <input type="url" id="spotify" name="spotify" placeholder="https://open.spotify.com/artist/…">
+            </div>
+            <div class="form-group">
+              <label for="soundcloud">SoundCloud URL</label>
+              <input type="url" id="soundcloud" name="soundcloud" placeholder="https://soundcloud.com/…">
+            </div>
+            <div class="form-group">
+              <label for="youtube">YouTube Embed URL</label>
+              <input type="url" id="youtube" name="youtube" placeholder="https://www.youtube.com/embed/…">
+            </div>
+            <div class="form-group">
+              <label for="instagram">Instagram URL</label>
+              <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/…">
+            </div>
+            <div class="form-group">
+              <label for="facebook">Facebook URL</label>
+              <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/…">
+            </div>
+
+            <!-- Photo URL -->
+            <div class="form-group full">
+              <label for="photo">Photo URL</label>
+              <input type="url" id="photo" name="photo" placeholder="Direct link to a promo photo (JPG/PNG)">
+              <span class="form-note">Tip: upload to Google Drive or Dropbox and paste the public share link.</span>
+            </div>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">Submit Your Profile</button>
+            <p class="form-note">We review all submissions and aim to have approved profiles live within 2 business days.</p>
+          </div>
+
+          <div class="success-msg" id="success-msg">
+            ✅ Thanks! Your profile has been submitted. We'll be in touch within 2 business days.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">Newcastle <span>Musicians</span></span>
+        <ul class="footer-links">
+          <li><a href="directory.html">Directory</a></li>
+          <li><a href="submit.html">List Your Act</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <p class="footer-copy">© 2024 Newcastle Musicians. Made for the Hunter Valley music community.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Bio char count
+    const bioEl = document.getElementById('bio');
+    const bioCount = document.getElementById('bio-count');
+    bioEl.addEventListener('input', () => { bioCount.textContent = bioEl.value.length + ' / 300'; });
+
+    // Genre checkbox toggle styling
+    document.querySelectorAll('.genre-check-label').forEach(label => {
+      label.addEventListener('click', function() {
+        setTimeout(() => {
+          this.classList.toggle('checked', this.querySelector('input').checked);
+        }, 0);
+      });
+    });
+
+    // Netlify form success redirect handling
+    const form = document.getElementById('submit-form');
+    form.addEventListener('submit', function(e) {
+      // Netlify handles POST — show success msg after short delay
+      setTimeout(() => {
+        document.getElementById('success-msg').style.display = 'block';
+        form.reset();
+        document.querySelectorAll('.genre-check-label').forEach(l => l.classList.remove('checked'));
+        bioCount.textContent = '0 / 300';
+      }, 800);
+    });
+  </script>
+</body>
+</html>
